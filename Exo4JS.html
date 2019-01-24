@@ -6,18 +6,27 @@
     </head>
     <body>
         <form>
-            <label for="lastname">Nom : </label><input type="text" name="lastname" id="lastname"/>
-            <label for="firstname">Prénom : </label><input type="text" name="firstname" id="firstname"/>
-            <label for="city">Ville : </label><input type="text" name="city" id="city"/>
-            <button  name="submit" onclick="valeur()" id="submit">Valider</button>
+            <label for="lastname">Nom : </label><input type="text" name="lastname" id="lastname" />
+            <label for="firstname">Prénom : </label><input type="text" name="firstname" id="firstname" />
+            <label for="city">Ville : </label><input type="text" name="city" id="city" />
+            <button  name="submit" onclick="displayInformations()" id="submit">Valider</button>
         </form>
         <script>
-          function valeur() {
-          var lastname = document.getElementById('lastname').value;
-          var firstname = document.getElementById('firstname').value;
-          var city = document.getElementById('city').value;
-          alert(lastname+"\n"+firstname+"\n"+city);
-}
+          function displayInformations() {
+
+            var regexName = /^[a-zA-Z ]+$/;
+
+            var lastname = document.getElementById('lastname').value;
+            var firstname = document.getElementById('firstname').value;
+            var city = document.getElementById('city').value;
+            if (lastname.match(regexName) && firstname.match(regexName) && city.match(regexName)){
+              alert('Nom : ' + lastname + '\nPrénom : ' + firstname + '\nVille : ' +  city);
+            }else {
+              alert('Les champs saisis ne sont pas valide');
+            }
+
+            }
+          }
         </script>
     </body>
 </html>
